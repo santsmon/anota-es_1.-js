@@ -1,5 +1,11 @@
-seguindo a logica matemática {
+engenharia matematica {
 ROE = lucro liquido / pelo patrimonio x 100 }
+
+ojetivo: Análise Fundamentalista
+Indicadores chave: P/L (Preço/Lucro),
+ROE (Rentabilidade) - ok (exxecutada)
+Dividend Yield (Dividendos).
+
 
 ficheiro previsto:
 =========================================
