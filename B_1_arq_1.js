@@ -1,20 +1,35 @@
 function gerarRelatorioROE(ticker, lucro, patrimonio) {
+   
     let roe = (lucro / patrimonio) * 100;
+    const MEDIA = 15;
+    
+    // 2. Data e Horário da Operação (Formato: DD/MM/AAAA HH:MM:SS)
+    let dataHora = new Date().toLocaleString('pt-BR');
 
-    // 2. Pegando a data atual formatada (dia/mês/ano)
-    let dataAtual = new Date().toLocaleDateString('pt-BR');
+    // 3. Lógica com 3 condições (Acima, Na Média, Abaixo)
+    let status;
+    if (roe > MEDIA) {
+        status = "ACIMA DA MÉDIA";
+    } else if (roe === MEDIA) {
+        status = "NA MÉDIA";
+    } else {
+        status = "ABAIXO DA MÉDIA";
+    }
 
-    // 3. Lógica de análise (Condicional)
-    let status = roe > 15 ? "EXCELENTE" : "ABAIXO DA MÉDIA";
-
-    // 4. Retorno usando Template Strings (Crasis) para facilitar a concatenação
-    return `--- RELATÓRIO DE ANÁLISE ---
-Ativo: ${ticker}
-Data da Análise: ${dataAtual}
-ROE Calculado: ${roe.toFixed(2)}%
-Status: ${status}
----------------------------`;
+    // 4. Retorno do relatório organizado
+    return `
+=========================================
+      RELATÓRIO TÉCNICO DE ATIVO
+=========================================
+Ativo:            ${ticker}
+Data da Operação: ${dataHora}
+-----------------------------------------
+ROE Calculado:    ${roe.toFixed(2)}%
+Média Referência: ${MEDIA.toFixed(2)}%
+Status:           ${status}
+=========================================
+`;
 }
 
-// TESTANDO: (Exemplo com números fictícios de lucro e patrimônio)
+// TESTANDO:
 console.log(gerarRelatorioROE("PETR4", 31000, 150000));
